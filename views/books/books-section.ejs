@@ -1,7 +1,7 @@
 
 <div class="section-cont">
   <div class="book-header">
-    <h2 class="title">Books Section</h2>
+    <h2 class="title large">Books Section</h2>
 
     <form action="/books" method="post">
       <input list="categories" name="category" id="category">
@@ -22,12 +22,13 @@
     <% if (data.length) { %> 
 
       <h4 class="title sub"><%= category %> </h4>
+      <div class="card-grid">
       <% data.forEach(item => { %>
-        <div class="card">
-         
-          <p class="book_nm"><%= item.bk_nm %></p>
-        </div>
-      
+          <div class="card">
+            <p class="book-nm title sub center "><%= item.bk_nm %></p>
+            <img src="/images/book-cover.jpg" alt="" class="book-img">
+            <a href="" class="button"> Borrow </a>
+          </div>
       <% }) %>
     <% } else {%>
       <div style="margin: 20px;">
@@ -35,5 +36,6 @@
         <p>No entries for this category</p>
       </div>
     <% } %> 
+  </div>
   </div>
 </div>
