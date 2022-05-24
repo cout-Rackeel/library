@@ -1,0 +1,39 @@
+
+<div class="section-cont">
+  <div class="book-header">
+    <h2 class="title">Books Section</h2>
+
+    <form action="/books" method="post">
+      <input list="categories" name="category" id="category">
+      <datalist id="categories">
+        <option value="Fantasy">
+        <option value="Science-Fiction">
+        <option value="Comics">
+        <option value="Action and Adventure">
+        <option value="Spiritual">
+        <option value="Mystery">
+        <option value="Comedy">
+      </datalist>
+    </form>
+  
+  </div>
+
+  <div class="content" style="margin: 20px;">
+    <% if (data.length) { %> 
+
+      <h4 class="title sub"><%= category %> </h4>
+      <% data.forEach(item => { %>
+        <div class="card">
+         
+          <p class="book_nm"><%= item.bk_nm %></p>
+        </div>
+      
+      <% }) %>
+    <% } else {%>
+      <div style="margin: 20px;">
+        <h4 class="title sub"><%= category %> </h4>
+        <p>No entries for this category</p>
+      </div>
+    <% } %> 
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel="stylesheet" href="<%= stylesheet %>" />
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<script
+			src="https://kit.fontawesome.com/7932ed34bd.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="/javascripts/menu-scripts.js" defer></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Comfortaa:wght@300&family=Dancing+Script&family=Lato:wght@100&family=Montserrat:wght@100;200&family=Mukta:wght@200&family=Poppins:wght@200&family=Source+Sans+3&family=Zen+Loop&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+
+	<body>
+		<%- include('../partials/navbar') %>
+		<main><%- body %></main>
+	</body>
+</html>
