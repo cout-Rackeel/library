@@ -5,7 +5,7 @@ var conn = require('../lib/db')
 
 router.get('/' , (req,res,next) => {
   var str = 'All Categories';
-  var bookSQL = "SELECT bk.id, bk.bk_nm , bc.bk_cats FROM library.books bk , library.book_cats bc WHERE bk_cat_id = bc.id  ";
+  var bookSQL = "SELECT bk.id, bk.bk_nm , bc.bk_cats  FROM library.books bk , library.book_cats bc WHERE bk_cat_id = bc.id  ";
 
     conn.query( bookSQL , (err,rows) => {
       if(err) throw err;

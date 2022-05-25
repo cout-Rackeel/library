@@ -3,13 +3,13 @@
   <div class="book-header">
     <h2 class="title large">Books Section</h2>
 
-    <div style="position: absolute ; top:100px">
+    <div style="width: 100% ;">
       <% if (messages.error) { %>
         <p style="color:red"><%- messages.error %></p>
     <% } %>
     
     <% if (messages.success) { %>
-         <p class="alert alert-success mt-4"><%- messages.success %></p>
+         <p style="color:green"><%- messages.success %></p>
     <% } %>
     </div>
 

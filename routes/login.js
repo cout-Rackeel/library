@@ -22,17 +22,7 @@ router.post('/add', (req,res,next) => {
 
   function checkEmail() {
     var response;
-    // var emails = ['librarian@mail.com', 'librarian2@mail.com'];
-
-    // emails.forEach( (email) => {
-
-    //   if(req.body.email !== email ){
-    //     response = 'no';
-    //   }else{
-    //     response = 'yes';
-    //   }
-    // })
-
+    
     if(req.body.email !== 'librarian1@mail.com' ){
           response = 'no';
         }else{
@@ -45,7 +35,7 @@ router.post('/add', (req,res,next) => {
   }
 
   bcrypt.hash(req.body.password, saltRounds, (err,hash) => {
-    var data = { username:req.body.username , email:req.body.email, password : hash, is_lib : checkEmail()}
+    var data = { fname:req.body.fname ,  lname:req.body.lname, username:req.body.username , email:req.body.email, password : hash, is_lib : checkEmail()}
     conn.query(addSQL, data , (err,rows) => {
       if (err) throw err;
       req.flash('success', 'Sign In successful!');
@@ -68,6 +58,10 @@ router.post('/authlogin', (req,res,next) => {
         if(result){
           req.flash('success', 'Welcome ' + req.body.username);
           req.session.loggedIn = true;
+          req.session.is_lib = rows[0].is_lib
+          req.session.userID = rows[0].id;
+          req.session.fname = rows[0].fname;
+          req.session.lname = rows[0].lname;
           req.session.usernm = req.body.username ;
           req.session.email = req.body.email;
           req.session.password = req.body.password ;

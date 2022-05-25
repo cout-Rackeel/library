@@ -15,6 +15,10 @@ a{
   color: #333 !important;
 }
 
+.text.--2{
+  color: white !important;
+  text-align: center;
+}
 
 
 .button{

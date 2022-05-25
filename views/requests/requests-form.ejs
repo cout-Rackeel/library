@@ -1,0 +1,52 @@
+<div style="position: absolute ; top:100px">
+  <% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+
+<% if (messages.success) { %>
+     <p class="alert alert-success mt-4"><%- messages.success %></p>
+<% } %>
+</div>
+
+<div class="form-container">
+  <div class="form-header">
+    
+      <div class="form-logo">
+        <span class="l-text1 small">Stony</span>
+        <span class="l-text2 small">Stories</span>
+        <span><i class="fa-solid fa-book-open-reader small"></i></span>
+      </div>
+    
+    <h2 class="title right">Book Selection</h2>
+  </div>
+  <form action="/requests/add-request" method="post">
+
+    <div class="form-control">
+      <label for="username">Username :- <%= my_session.usernm %></label>
+      <input type="hidden" name="userID" id="userID" value="<%= my_session.userID %>"  >
+    </div>
+
+    <hr style="width: 100%; background-color:lightgray; margin-bottom: 10px;">
+
+    <div class="form-control">
+      <label for="bookID">Book Requested :- <%= data.bk_nm %> </label>
+      <input type="hidden" name="bookID" id="bookID"  value="<%= data.id %> " >
+    </div>
+
+    <hr style="width: 100%; background-color:lightgray; margin-bottom: 10px;">
+
+
+    <!-- <div class="form-control">
+      <label for="password"> Type password to confirm</label>
+      <input type="password" name="password" id="password"  >
+    </div> -->
+
+
+    <div class="btn-cont">
+       <button class="button" type="submit">Submit</button>
+      <hr style="width: 100%; background-color:lightgray; margin-bottom: 10px; margin-top: 10px;">
+       <a href="/books"><button type="button" class="button"> Back</button></a>
+    </div>
+
+  </form>
+</div>
