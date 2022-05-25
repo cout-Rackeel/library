@@ -5,14 +5,14 @@ const bcrypt = require('bcrypt')
 
 router.get('/' , (req,res,next) => {
   
-    res.render('login/login' , {title:'Login Page' , stylesheet:''})
+    res.render('login/login' , {title:'Login Page' , stylesheet:''  , bootstrap:false , my_session : req.session} )
   
 })
 
 
 router.get('/signup' , (req,res,next) => {
 
-  res.render('login/signup' , {title:'Sign up Page' , stylesheet:''})
+  res.render('login/signup' , {title:'Sign up Page' , stylesheet:''  , bootstrap:false , my_session : req.session})
 
 })
 

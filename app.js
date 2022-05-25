@@ -16,6 +16,7 @@ var app = express();
 
 // Declaring Routes
 var indexRoute = require('./routes/index');
+var requestsRoute = require('./routes/requests');
 var booksRoute = require('./routes/books');
 var loginRoute = require('./routes/login');
 
@@ -41,7 +42,7 @@ app.use(session({
   secret:'M1O2mb103jum&1o/',
   resave: false,
   saveUninitialized: true,
-  cookie : {maxAge : 120000}
+  cookie : {maxAge : 1200000}
 }))
 app.use(flash());
 
@@ -49,6 +50,7 @@ app.use(flash());
   app.use('/',  indexRoute);
   app.use('/login' , loginRoute);
   app.use('/books' ,booksRoute);
+  app.use('/requests' , requestsRoute)
  
 
 // Listening to Port

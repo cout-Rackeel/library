@@ -6,7 +6,7 @@ var conn = require('../lib/db')
 
 router.get('/' , (req,res,next) => {
   
-    res.render('index' , {title:'Home Page' , stylesheet:'/stylesheets/index.css'})
+    res.render('index' , {title:'Home Page' , stylesheet:'/stylesheets/index.css'  , bootstrap:true , my_session: req.session })
   
 })
 

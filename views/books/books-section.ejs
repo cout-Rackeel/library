@@ -3,6 +3,16 @@
   <div class="book-header">
     <h2 class="title large">Books Section</h2>
 
+    <div style="position: absolute ; top:100px">
+      <% if (messages.error) { %>
+        <p style="color:red"><%- messages.error %></p>
+    <% } %>
+    
+    <% if (messages.success) { %>
+         <p class="alert alert-success mt-4"><%- messages.success %></p>
+    <% } %>
+    </div>
+
     <form action="/books" method="post">
       <input list="categories" name="category" id="category">
       <datalist id="categories">
@@ -27,7 +37,7 @@
           <div class="card">
             <p class="book-nm title sub center "><%= item.bk_nm %></p>
             <img src="/images/book-cover.jpg" alt="" class="book-img">
-            <a href="" class="button"> Borrow </a>
+            <a href="/requests/selection/<%= item.id %>" class="button"> Borrow </a>
           </div>
       <% }) %>
     <% } else {%>

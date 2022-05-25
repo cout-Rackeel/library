@@ -29,6 +29,7 @@
     justify-content: space-around;
     padding: 10px 20px;
     align-items: center;
+    margin-bottom: 0px !important;
   }
 
 
@@ -40,7 +41,7 @@
   }
 
   
-  .nav-cont a {
+  .nav-cont a , li{
     font-family: Comfortaa, sans-serif;
     font-weight: 100;
     font-size: 2.5vh;
@@ -109,10 +110,13 @@
 
       <li>
         <div class="user-section">
-
+          <% if (!my_session.loggedIn) {%> 
           <li><a href="/login">Login</a></li>
           <li><a href="/login/signup">Sign Up</a></li>
-
+          <%} else {%> 
+            <li><a href="/login/logout">Logout</a></li>
+            <li class=""> <%= my_session.usernm %> </li>
+          <%} %> 
         </div>
       </li>
     </ul>

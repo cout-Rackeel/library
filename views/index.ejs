@@ -1,5 +1,9 @@
-<div class="message" style="height:50vh;">
-  <% if (messages.success) { %>
-       <p class="alert alert-success mt-4"><%- messages.success %></p>
-  <% } %>
-  </div>
+<div class="message">
+  <% if (messages.error) { %>
+    <p style="color:red"><%- messages.error %></p>
+<% } %>
+
+<% if (messages.success) { %>
+     <p class="alert alert-success mt-4"><%- messages.success %></p>
+<% } %>
+</div>
