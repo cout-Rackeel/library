@@ -93,6 +93,14 @@ background-image: linear-gradient(70deg , hsl(305, 99%, 31%, 0.5) , hsl(249, 100
   font-family: Montserrat, sans-serif;
   width: 100%;
   font-size: 24px;
+  text-transform: capitalize;
+}
+
+.username{
+  font-family: Montserrat, sans-serif;
+  width: 100%;
+  font-size: 20px;
+  text-transform: capitalize;
 }
 
 .title.large{
