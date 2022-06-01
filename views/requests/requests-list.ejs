@@ -32,11 +32,11 @@
           <td> <%= data[i].id%> </td>
           <td> <%= data[i].fname%> </td>
           <td> <%= data[i].lname%> </td>
-          <td> <%= data[i].bk_nm%> </td>
+          <td> <%= data[i].bk_nm%>  <%=data[i].bk_id%> </td>
           <td> <%= data[i].status%> </td>
           <% if(my_session.is_lib === 'yes') { %> 
             <td>
-            <a href="" class="text --2 button">Allow</a>
+            <a href="requests/allow/<%=data[i].bk_id%>" class="text --2 button">Allow</a>
             <a href="" class="text --2 button">Deny</a>
             </td>
           <% }%>    

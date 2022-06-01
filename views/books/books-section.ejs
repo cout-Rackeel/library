@@ -36,8 +36,18 @@
       <% data.forEach(item => { %>
           <div class="card">
             <p class="book-nm title sub center "><%= item.bk_nm %></p>
-            <img src="/images/book-cover.jpg" alt="" class="book-img">
-            <a href="/requests/selection/<%= item.id %>" class="button"> Borrow </a>
+            
+            <div class="book-img-cont">
+              <img src="<%= item.bk_img %> " alt="" class="book-img">
+            </div>
+           
+            <div class="descrip-cont">
+              <p class="bk-descrip"><%= item.bk_desc %> </p>
+              <div class="btn-cont"> 
+              <a href="/requests/selection/<%= item.id %>" class="button"> Borrow </a>
+              </div>
+            </div>
+           
           </div>
       <% }) %>
     <% } else {%>
