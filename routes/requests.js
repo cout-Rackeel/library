@@ -33,7 +33,7 @@ router.get('/selection/:id' , (req,res,next) => {
 //   })
 
   router.get('/request-list-all' , (req,res,next) => {
-    var listSQL = 'SELECT u.id, u.fname , u.lname , bk.bk_nm , bs.status FROM library.requested_books rb , library.books bk , library.book_statuses bs , library.users u WHERE rb.student_id = u.id AND rb.bk_id = bk.id AND bk.status_id = bs.id' ;
+    var listSQL = 'SELECT u.id, u.fname , u.lname , bk.bk_nm , rb.bk_id, bs.status FROM library.requested_books rb , library.books bk , library.book_statuses bs , library.users u WHERE rb.student_id = u.id AND rb.bk_id = bk.id AND bk.status_id = bs.id' ;
 
     conn.query(listSQL , (err,rows) =>{
        if (err) throw err;
@@ -63,35 +63,34 @@ router.get('/selection/:id' , (req,res,next) => {
 
 
   router.post('/add-request' , (req,res,next) => {
-    // var saltRounds = 10;
+    var booksRequested = req.session.booksRequested;
+    var canRequest = true;
 
-    // var password = conn.query('SELECT * FROM users WHERE')
+    booksRequested.forEach(bkRequest => {
+      if(bkRequest == req.body.bookID){
+        canRequest = false
+      }else{
+        canRequest = true;
+      }
+    });
 
-    // bcrypt.hash(req.body.password , saltRounds , (err,hash) => {
-    //     bcrypt.compare(hash, req.session.password , (err,result) => {
-    //         if(result){
-    //          var addSQL = 'INSERT INTO requested_books SET ? ';
-    //          var data = {student_id: req.body.userID , bk_id: req.body.bookId}
-    //          conn.query(addSQL, data , (err,rows) => {
-    //             if (err) throw err
-    //             req.flash('success', 'Book requested to borrow');
-    //             res.redirect('/books')
-    //          })
-    
-    //         }else{
-    //             res.send(error)
-    //         }
-    //     })
-    // })
-    
-    var addSQL = 'INSERT INTO requested_books SET ? ';
-             var data = {student_id: req.body.userID , bk_id: req.body.bookID}
+    console.log(canRequest);
+
+    if(canRequest){
+      var addSQL = 'INSERT INTO requested_books SET ? ';
+             var data = {student_id: req.body.userID , bk_id: req.body.bookID , requested_id: req.body.date}
              conn.query(addSQL, data , (err,rows) => {
                 if (err) throw err
                 req.flash('success', 'Book requested to borrow');
+                req.session.booksRequested.push(req.body.bookID);
                 res.redirect('/books')
-             })
+      })
+    }else{
+      req.flash('error', 'Book already requested');
+      res.redirect('/books');
+    }
     
+  
   });
 
 
