@@ -66,7 +66,8 @@ router.post('/authlogin', (req,res,next) => {
           req.session.email = req.body.email;
           req.session.password = req.body.password ;
           req.session.booksRequested = [];
-          res.redirect('/');
+          req.session.flag = 0 ;
+          res.redirect('/requests/request-list');
         }else{
           req.flash('error' , 'Password incorrect');
           req.session.usernm = req.body.username ;
