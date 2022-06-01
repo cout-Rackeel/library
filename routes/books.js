@@ -9,7 +9,6 @@ router.get('/' , (req,res,next) => {
 
     conn.query( bookSQL , (err,rows) => {
       if(err) throw err;
-      console.log(rows);
       res.render('books/books-section' , {title:'Stony Stories - Books Page' , stylesheet:'/stylesheets/books.css' , data:rows, category:str , bootstrap:false , my_session : req.session})
     })
   
@@ -21,8 +20,6 @@ router.post('/' , (req,res,next) => {
 
     conn.query( bookSQL , (err,rows) => {
       if(err) throw err;
-      console.log(str);
-      console.log(rows);
       res.render('books/books-section' , {title:'Stony Stories - Books Page' , stylesheet:'/stylesheets/books.css' , data:rows , category:str , bootstrap:false , my_session: req.session })
     })
 
